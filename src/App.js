@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Translator from "./components/Translator";
+import "./App.css";
 
 function App() {
+  const [text, setText] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto p-5 my-10 bg-white shadow text-center flex flex-col items-center">
+      <h1>Translate text from English to Spanish</h1>
+      <input
+        name="word"
+        aria-label="word-input"
+        placeholder="Type some text"
+        className="p-2 w-2/4"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      {text && <Translator text={text} />}
     </div>
   );
 }
